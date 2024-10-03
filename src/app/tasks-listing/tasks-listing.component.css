@@ -1,0 +1,35 @@
+.taskItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    background-color: #74ceda;   
+    margin: 10px; 
+    padding: 10px; 
+    border-radius: 8px; 
+    transition: background-color 0.3s ease; 
+    font-family: Arial;
+}
+
+.taskItem:hover {
+    background-color: #5c88b3;
+}
+
+.taskText {
+    color: white;
+    margin-right: 10px;
+   
+}
+
+.deleteButton {
+    background-color: rgb(255, 33, 33);
+    color: white;
+    border-radius: 8px; 
+    border: none;
+    padding: 20px 20px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+}
+
+.deleteButton:hover {
+    background-color: rgb(184, 0, 0); 
+}

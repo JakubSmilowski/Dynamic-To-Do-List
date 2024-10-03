@@ -1,0 +1,20 @@
+<section class="content">
+    <div *ngIf="isPopUpOpen" class="popUp">
+        <div class="popUpContnet">
+          <p>You can't add more tasks!</p>
+          <button (click)="isPopUpOpen = false">Close</button>
+        </div>
+      </div>
+    <section class="ListBox">
+        <div class="dynamicNavigation">
+            <input class="inputTask" type="text" [(ngModel)]="newTask" placeholder="Enter a new task">
+            <button class="addTask" (click)="addTask()">Add Task</button>
+        </div>
+        <div class="tasksListing">
+            <app-tasks-listing *ngFor="let taskListing of tasksListingList" 
+                              [tasksListing]="taskListing"
+                              [deleteTask]="deleteTask.bind(this)">
+            </app-tasks-listing>
+        </div>
+    </section>
+</section>
