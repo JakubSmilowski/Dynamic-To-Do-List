@@ -1,7 +1,23 @@
+@keyframes pop {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
 .content {
     display: flex;
     justify-content: center;
-    height: 100vh; 
+    height: 80vh; 
     margin: 0px; 
     background-color: #f0f0f0;
     font-family: Arial;
@@ -11,9 +27,8 @@
     background-color: #c2f3ff;
     display: flex;
     flex-direction: column;
-    height: 80vh;
-    width: 50vh; 
-    margin-top: 30px;
+    width: 55vh;
+    margin-top: 5px;
     border-radius: 8px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -33,6 +48,26 @@
     width: 100%; 
     align-self: center;
     overflow-y: auto; 
+    
+}
+
+
+.tasksListing::-webkit-scrollbar {
+    width: 12px; 
+}
+
+.tasksListing::-webkit-scrollbar-track {
+    background: #c2f3ff; 
+    border-radius: 10px; 
+}
+
+.tasksListing::-webkit-scrollbar-thumb {
+    background: #007BFF; 
+    border-radius: 10px; 
+}
+
+.tasksListing::-webkit-scrollbar-thumb:hover {
+    background: #006bdd;
 }
 
 .inputTask {
@@ -66,13 +101,13 @@
 
 .popUp {
     position: fixed;
+    justify-content: center;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5); 
     display: flex;
-    justify-content: center;
     align-items: center;
   }
   .popUpContnet {
@@ -81,3 +116,18 @@
     border-radius: 4px;
     text-align: center;
   }
+
+  .popUpSucces {
+    position: fixed;
+    justify-content: center;
+    bottom: 20px; 
+    right: 20px;  
+    animation: pop 0.3s ease; 
+}
+
+.popUpSuccesContnet {
+    background: rgb(171, 255, 178);
+    padding: 5px;
+    border-radius: 4px;
+    text-align: center;
+}

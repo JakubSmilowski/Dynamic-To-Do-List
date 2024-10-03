@@ -14,6 +14,9 @@ import { FormsModule } from '@angular/forms';
 export class HomeComponent {
 
   isPopUpOpen: boolean = false; 
+  isBlankOpen: boolean = false;
+  isSuccesOpen: boolean = false;
+  ifLimitReached: boolean = true;
 
   newTask: string = "";
 
@@ -21,7 +24,7 @@ export class HomeComponent {
 
   addTask() {
     if(this.newTask !== "") {
-        if(this.tasksListingList.length !== 5){
+        if(this.tasksListingList.length !== 20){
           
           const newTaskItem: TasksListing = {
             id: this.tasksListingList.length + 1,
@@ -31,11 +34,21 @@ export class HomeComponent {
     
           this.saveListToLocalStorage();
           this.newTask = '';
+          
+          this.isSuccesOpen = true;
+          setTimeout(() => {
+            this.isSuccesOpen = false;
+          }, 1000);
+
         } else{
           this.isPopUpOpen = true;
+          this.ifLimitReached = false;
         }  
+    }else{
+      this.isBlankOpen = true;
     }
     
+
   }
 
   saveListToLocalStorage() {
@@ -45,6 +58,7 @@ export class HomeComponent {
   deleteTask(taskId: number) {
     this.tasksListingList = this.tasksListingList.filter(task => task.id !== taskId);
     this.saveListToLocalStorage(); 
+    this.ifLimitReached = true;
   }
 
   loadTasksFromLocalStorage() {

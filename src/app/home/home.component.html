@@ -1,14 +1,30 @@
 <section class="content">
     <div *ngIf="isPopUpOpen" class="popUp">
         <div class="popUpContnet">
-          <p>You can't add more tasks!</p>
+          <p>You can't add more tasks! </p>
+          <p>Delete one of the existing tasks.</p>
           <button (click)="isPopUpOpen = false">Close</button>
         </div>
       </div>
+
+      <div *ngIf="isBlankOpen" class="popUp">
+        <div class="popUpContnet">
+          <p>You can't add empty tasks!</p>
+          <button (click)="isBlankOpen = false">Close</button>
+        </div>
+      </div>
+
+      <div *ngIf="isSuccesOpen" class="popUpSucces">
+        <div class="popUpSuccesContnet">
+          <p>Task added succesfuly!</p>
+          <button (click)="isSuccesOpen = false">X</button>
+        </div>
+      </div>
+
     <section class="ListBox">
         <div class="dynamicNavigation">
             <input class="inputTask" type="text" [(ngModel)]="newTask" placeholder="Enter a new task">
-            <button class="addTask" (click)="addTask()">Add Task</button>
+            <button *ngIf="ifLimitReached" class="addTask" (click)="addTask()">Add Task</button>
         </div>
         <div class="tasksListing">
             <app-tasks-listing *ngFor="let taskListing of tasksListingList" 
